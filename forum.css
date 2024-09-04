@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    background-color: #1F1F1F;
+    padding: 15px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #E0E0E0;
+    padding: 12px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #3C3C3C;
+    color: #ffc107;
+}
+
+.content {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    flex: 1;
+}
+
+.categories, 
+.threads, 
+.new-thread {
+    margin-bottom: 40px;
+}
+
+h1, 
+h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.category-list li {
+    margin: 10px 0;
+}
+
+.category-list a {
+    color: #ffc107;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.category-list a:hover {
+    text-decoration: underline;
+}
+
+.thread {
+    background-color: #1F1F1F;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.thread:hover {
+    transform: scale(1.02);
+}
+
+.thread h3 {
+    margin-bottom: 10px;
+    color: #ffc107;
+}
+
+.thread p {
+    margin: 5px 0;
+    color: #E0E0E0;
+}
+
+.new-thread {
+    background-color: #1F1F1F;
+    padding: 20px;
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+.new-thread form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-thread label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.new-thread input, 
+.new-thread textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #1F1F1F;
+    color: #E0E0E0;
+}
+
+.new-thread input:focus, 
+.new-thread textarea:focus {
+    outline: none;
+    border-color: #ffc107;
+}
+
+.new-thread button {
+    background-color: #3C3C3C;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.new-thread button:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1F1F1F;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-top: auto;
+}

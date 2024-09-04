@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f8f9fa; /* Soft light gray-blue */
+    color: #212529; /* Dark grayish-black */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    background-color: #0d6efd; /* Bright blue header */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px 0; /* Increased padding */
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Increased gap for larger navbar */
+}
+
+.nav-link {
+    text-decoration: none;
+    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    font-size: 1.2rem; /* Slightly larger font size */
+    color: white; /* White text */
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ffc107; /* Gold hover effect */
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px; /* Below the header */
+    width: 200px;
+    background-color: #343a40; /* Dark gray sidebar */
+    height: 100%;
+    padding-top: 20px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.sidebar-menu li {
+    margin: 20px 0;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.sidebar-menu a:hover {
+    color: #ffc107; /* Gold hover effect */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 80px; /* Space for fixed header */
+    margin-left: 220px; /* Space for sidebar */
+    width: 100%;
+    max-width: 600px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.content-bar {
+    width: 100%;
+    background-color: #ffffff; /* White background */
+    color: #0d6efd; /* Bright blue text */
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    font-family: 'Roboto', sans-serif; /* Roboto font for buttons */
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.content-bar:hover {
+    background-color: #0d6efd; /* Blue background on hover */
+    color: white; /* White text on hover */
+    transform: scale(1.03); /* Slight scaling effect */
+}
+
+.info {
+    text-align: center;
+    margin: 20px;
+    max-width: 800px;
+}
+
+.info h2 {
+    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    font-size: 1.8rem;
+    color: #0d6efd; /* Bright blue text */
+    margin-bottom: 10px;
+}
+
+.info p {
+    font-size: 1rem;
+    color: #212529; /* Dark grayish-black text */
+    line-height: 1.6;
+}

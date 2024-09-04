@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="signup.css">
+    <title>Nexus Bloom | Sign Up</title>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Nexus Bloom</p>
+            </div>
+        </nav>
+
+        <div class="form-box">
+            <div class="signup-container">
+                <div class="top">
+                    <span>Already have an account? <a href="index.html">Sign In</a></span>
+                    <header>Create an Account</header>
+                </div>
+                <form id="signupform" onsubmit="return validateForm(event)">
+                    <div class="input-box">
+                        <input type="text" id="fullName" class="input-field" placeholder="Full Name" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="phone" class="input-field" placeholder="Phone Number" required>
+                        <i class="bx bx-phone"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="country" class="input-field" placeholder="Country" required>
+                        <i class="bx bx-globe"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="password" class="input-field" placeholder="Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <select id="userType" class="input-field" required>
+                            <option value="">Select Account Type</option>
+                            <option value="user">User</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Sign Up">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function validateForm(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const country = document.getElementById('country').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            const userType = document.getElementById('userType').value;
+
+            // Basic form validation (you can add more validation as needed)
+            if (fullName.length < 3) {
+                alert("Full Name must be at least 3 characters long.");
+                return false;
+            }
+
+            const phonePattern = /^[0-9]{10,15}$/;
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid phone number (10-15 digits).");
+                return false;
+            }
+
+            if (country.length < 2) {
+                alert("Please enter a valid country name.");
+                return false;
+            }
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                console.log(password)
+                console.log(confirmPassword)
+
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            if (!userType) {
+                alert("Please select an account type.");
+                return false;
+            }
+
+            // Data object to be sent to the server
+            const formData = {
+                username: fullName, // Assuming username is the full name
+                password: password,
+                role: userType, // The role field should match the backend expectation
+                phoneNumber: phone, // Ensure this matches the backend field
+                country: country
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.message);
+                    if (userType === "user") {
+                        window.location.href = 'homepage.html';
+                    } else if (userType === "seller") {
+                        window.location.href = 'home_seller.html';
+                    }
+                } else {
+                    alert(result.message || "Registration failed. Please try again.");
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert("An error occurred. Please try again later.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Report - Nexus Bloom</title>
+    <link rel="stylesheet" href="sales_report.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="seller_home.html" class="nav-link">Dashboard</a></li>
+                <li><a href="seller.html" class="nav-link">Add Product</a></li>
+                <li><a href="manage-products.html" class="nav-link">Manage Products</a></li>
+                <li><a href="sales_report.html" class="nav-link">Sales Report</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <h1>Sales Report</h1>
+        
+        <div class="filter-section">
+            <label for="date-range">Date Range:</label>
+            <input type="date" id="start-date"> to <input type="date" id="end-date">
+            <button class="filter-button">Filter</button>
+        </div>
+
+        <table class="sales-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Product Name</th>
+                    <th>Quantity Sold</th>
+                    <th>Total Revenue</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Data -->
+                <tr>
+                    <td>2024-08-12</td>
+                    <td>Sustainable Tote Bag</td>
+                    <td>50</td>
+                    <td>$1,250</td>
+                    <td>
+                        <button class="view-details-button">View Details</button>
+                        <button class="export-button">Export</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2024-08-11</td>
+                    <td>Recycled Glass Bottle</td>
+                    <td>30</td>
+                    <td>$900</td>
+                    <td>
+                        <button class="view-details-button">View Details</button>
+                        <button class="export-button">Export</button>
+                    </td>
+                </tr>
+                <!-- More rows can be added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='home_seller.html'">Back to Dashboard</button>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.filter-button').addEventListener('click', function() {
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            
+            // Implement filtering logic here based on startDate and endDate
+            alert(`Filter applied from ${startDate} to ${endDate}`);
+        });
+
+        document.querySelectorAll('.view-details-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Implement view details functionality here
+                alert('Viewing details for the selected product.');
+            });
+        });
+
+        document.querySelectorAll('.export-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Implement export functionality here
+                alert('Exporting the selected report.');
+            });
+        });
+    </script>
+</body>
+</html>

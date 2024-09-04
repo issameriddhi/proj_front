@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sustainable.css">
+    <title>Nexus Bloom | Sustainable Products</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="homepage.html" class="nav-link">Home</a></li>
+                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="donate.html" class="nav-link">Donate</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li class="basket">
+                    <img src="basket.png" alt="Basket Icon">
+                    <span>Basket: </span><span id="basket-count">0</span> items
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <h2>Filter Products</h2>
+            <div class="filter-group">
+                <label for="type">Type:</label>
+                <select id="type">
+                    <option value="all">All</option>
+                    <option value="recycled">Recycled</option>
+                    <option value="organic">Organic</option>
+                    <option value="biodegradable">Biodegradable</option>
+                    <option value="upcycled">Upcycled</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="price">Price Range:</label>
+                <select id="price">
+                    <option value="all">All</option>
+                    <option value="0-50">Under $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-200">$100 - $200</option>
+                    <option value="200+">Over $200</option>
+                </select>
+            </div>
+        </aside>
+
+        <div class="product-grid">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <img src="sust_1.png" alt="Solar-Powered Eco Lamp">
+                <div class="product-details">
+                    <h2>Solar-Powered Eco Lamp</h2>
+                    <p class="material">Material: Recycled Aluminum, Solar Panels</p>
+                    <p class="price">$55</p>
+                    <p class="description">Illuminate your space sustainably with this sleek solar-powered lamp. Made from recycled aluminum and high-efficiency solar panels, it provides eco-friendly lighting without batteries or electricity.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <img src="sust_2.png" alt="Upcycled Ocean Plastic Phone Case">
+                <div class="product-details">
+                    <h2>Upcycled Ocean Plastic Phone Case</h2>
+                    <p class="material">Material: Recycled Ocean Plastic</p>
+                    <p class="price">$30</p>
+                    <p class="description">Protect your phone with a case made from recycled ocean plastic. Each case helps remove plastic waste from our oceans while offering durable protection and a sleek design.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <img src="sust_3.png" alt="Bamboo Charcoal Air Purifier">
+                <div class="product-details">
+                    <h2>Bamboo Charcoal Air Purifier</h2>
+                    <p class="material">Material: Bamboo Charcoal</p>
+                    <p class="price">$22</p>
+                    <p class="description">Freshen up your home naturally with this bamboo charcoal air purifier. Bamboo charcoal absorbs odors and pollutants from the air, providing a sustainable way to keep your environment fresh.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Card 4 -->
+            <div class="product-card">
+                <img src="sust_4.png" alt="Recycled Paper Plant Pots">
+                <div class="product-details">
+                    <h2>Recycled Paper Plant Pots</h2>
+                    <p class="material">Material: Recycled Paper Pulp</p>
+                    <p class="price">$18</p>
+                    <p class="description">Grow your plants in biodegradable pots made from recycled paper pulp. Perfect for seedlings and can be planted directly into the soil, reducing waste and promoting healthy growth.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='homepage.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <script>
+        let basketCount = 0;
+
+        function updateBasketCount() {
+            document.getElementById('basket-count').textContent = basketCount;
+        }
+
+        document.querySelectorAll('.add-to-basket').forEach(button => {
+            button.addEventListener('click', () => {
+                basketCount++;
+                updateBasketCount();
+                alert('Product added to basket!');
+            });
+        });
+    </script>
+</body>
+</html>

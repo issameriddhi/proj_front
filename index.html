@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Nexus Bloom | Sign In</title>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Nexus Bloom</p>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn">Sign In</button>
+            </div>
+        </nav>
+
+        <div class="form-box">
+            <div class="login-container">
+                <div class="top">
+                    <span>Don't have an account? <a href="signup.html">Sign Up</a></span>
+                    <header>Login</header>
+                </div>
+                <form id="loginForm" onsubmit="validateForm(event)">
+                    <div class="input-box">
+                        <input type="text" id="username" class="input-field" placeholder="Username or Email" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="password" class="input-field" placeholder="Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Sign In">
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="login-check">
+                            <label for="login-check"> Remember Me</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Forgot password?</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function validateForm(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            try {
+                const response = await fetch('http://localhost:3000/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.message);
+                    localStorage.setItem(
+                        'token',
+                        result.token
+                    )
+
+                    // Redirect user to the appropriate homepage based on role
+                    const role = result.role; // Assuming the backend returns the user's role
+                    if (role === 'seller') {
+                        window.location.href = 'home_seller.html';
+                    } else {
+                        window.location.href = 'homepage.html';
+                    }
+                } else {
+                    alert(result.message || 'Login failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        }
+    </script>
+</body>
+</html>

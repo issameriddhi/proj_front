@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Page</title>
+    <link rel="stylesheet" href="seller.css">
+</head>
+<body>
+    <div class="seller-wrapper">
+        <nav class="seller-nav">
+            <div class="nav-logo">
+                <p>Nexus Bloom</p>
+            </div>
+            <div class="nav-links">
+                <a href="home_seller.html">Home</a>
+            </div>
+        </nav>
+
+        <div class="seller-form-container">
+            <header>Add Your Product</header>
+            <form id="sellerForm" onsubmit="return submitProduct()">
+                <div class="input-box">
+                    <input type="text" id="productName" class="input-field" placeholder="Product Name" required>
+                </div>
+                <div class="input-box">
+                    <textarea id="productDescription" class="input-field" placeholder="Product Description" required></textarea>
+                </div>
+                <div class="input-box">
+                    <input type="number" id="productPrice" class="input-field" placeholder="Price" required>
+                </div>
+                <div class="input-box">
+                    <select id="productCategory" class="input-field" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="homemade">Homemade Products</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <input type="file" id="productImage" class="input-field" accept="image/*" required>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Add Product">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function submitProduct() {
+            // Form validation and submission logic
+            alert("Product added successfully!");
+            return false;
+        }
+    </script>
+</body>
+</html>

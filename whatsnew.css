@@ -1,0 +1,164 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.header {
+    background-color: #005f73;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.nav-link:hover {
+    background-color: #0a74da;
+    border-radius: 5px;
+}
+
+.basket {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.basket img {
+    height: 24px;
+    margin-right: 5px;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+h1 {
+    color: #005f73;
+}
+
+.update {
+    margin-bottom: 30px;
+}
+
+.update h2 {
+    color: #0077b6;
+}
+
+.update p {
+    margin: 10px 0;
+}
+
+.update button {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.update button:hover {
+    background-color: #005f73;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #e0fbfc;
+    border: 1px solid #0077b6;
+    border-radius: 8px;
+    overflow: hidden;
+    width: calc(50% - 20px);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-details h3 {
+    color: #0077b6;
+}
+
+.product-details .material,
+.product-details .price {
+    font-weight: bold;
+}
+
+.product-details .description {
+    margin: 10px 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.add-to-basket,
+.buy-now {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-basket img,
+.buy-now img {
+    height: 20px;
+    margin-right: 5px;
+}
+
+.add-to-basket:hover,
+.buy-now:hover {
+    background-color: #005f73;
+}
+
+.footer {
+    background-color: #005f73;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.footer button {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.footer button:hover {
+    background-color: #005f73;
+}

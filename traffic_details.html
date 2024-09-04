@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Traffic Details - Nexus Bloom</title>
+    <link rel="stylesheet" href="traffic_details.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="seller_home.html" class="nav-link">Dashboard</a></li>
+                <li><a href="seller.html" class="nav-link">Add Product</a></li>
+                <li><a href="manage-products.html" class="nav-link">Manage Products</a></li>
+                <li><a href="sales_report.html" class="nav-link">Sales Report</a></li>
+                <li><a href="traffic_details.html" class="nav-link">Traffic Details</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <h1>Website Traffic Details</h1>
+        
+        <div class="filter-section">
+            <label for="date-range">Date Range:</label>
+            <input type="date" id="start-date"> to <input type="date" id="end-date">
+            <button class="filter-button">Filter</button>
+        </div>
+
+        <div class="traffic-summary">
+            <div class="summary-card">
+                <h3>Total Visitors</h3>
+                <p id="total-visitors">1,200</p>
+            </div>
+            <div class="summary-card">
+                <h3>Page Views</h3>
+                <p id="page-views">4,500</p>
+            </div>
+            <div class="summary-card">
+                <h3>Bounce Rate</h3>
+                <p id="bounce-rate">45%</p>
+            </div>
+            <div class="summary-card">
+                <h3>Average Session Duration</h3>
+                <p id="avg-session-duration">3:15</p>
+            </div>
+        </div>
+
+        <div class="traffic-chart">
+            <h2>Daily Traffic Overview</h2>
+            <canvas id="trafficChart"></canvas>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='home_seller.html'">Back to Dashboard</button>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sample data
+        const trafficData = {
+            labels: ['2024-08-01', '2024-08-02', '2024-08-03', '2024-08-04', '2024-08-05'],
+            datasets: [{
+                label: 'Page Views',
+                data: [150, 200, 250, 300, 400],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true,
+            }]
+        };
+
+        // Render chart
+        const ctx = document.getElementById('trafficChart').getContext('2d');
+        const trafficChart = new Chart(ctx, {
+            type: 'line',
+            data: trafficData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return `Page Views: ${tooltipItem.raw}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Page Views'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Filter Button Event
+        document.querySelector('.filter-button').addEventListener('click', function() {
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            
+            // Implement filtering logic here based on startDate and endDate
+            alert(`Filter applied from ${startDate} to ${endDate}`);
+        });
+    </script>
+</body>
+</html>

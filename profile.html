@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Bloom | Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>User Profile</h1>
+        </header>
+
+        <div class="profile">
+            <img src="R.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="profile-details">
+                <h2 id="name">Riddhi Kasar</h2>
+                <p id="email">riddhiK@example.com</p>
+                <p id="phone">Phone: +91-9876543210</p>
+                <p id="country">Country: India</p>
+                <p id="bio">Love to shop,travel and dance</p>
+            </div>
+        </div>
+
+        <div class="social-media">
+            <h3>Connect with me</h3>
+            <ul>
+                <li><a href="https://linkedin.com/in/riddhiK" target="_blank">LinkedIn</a></li>
+                <li><a href="https://twitter.com/riddhiK" target="_blank">Twitter</a></li>
+                <li><a href="https://github.com/riddhiK" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+
+        <div class="button-container">
+            <button onclick="goBack()">Back</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function logout() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

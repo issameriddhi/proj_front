@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="manage-products.css">
+    <title>Nexus Bloom | Manage Products</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="home_seller.html" class="nav-link">Home</a></li>
+                <li><a href="add-product.html" class="nav-link">Add Product</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li class="logout">
+                    <button onclick="window.location.href='logout.html'" class="nav-link">Logout</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Manage Your Products</h1>
+
+        
+
+        <section class="add-product-section">
+            <h2>Add New Product</h2>
+            <form id="add-product-form">
+                <div class="form-group">
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Description:</label>
+                    <textarea id="product-description" name="product-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price ($):</label>
+                    <input type="number" id="product-price" name="product-price" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Category:</label>
+                    <select id="product-category" name="product-category" required>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Sustainable Products">Sustainable Products</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-image">Upload Product Image:</label>
+                    <input type="file" id="product-image" name="product-image" accept="image/*" required>
+                </div>
+                <button type="submit" class="add-product-btn">Add Product</button>
+            </form>
+        </section>
+        
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='home_seller.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Fetch and display products on page load
+    fetchProductsBySeller("yeay","ohnooo");
+
+    // Handle form submission
+    document.getElementById('add-product-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Create a FormData object to handle file uploads
+    const formData = new FormData();
+    formData.append('name', document.getElementById('product-name').value);
+    formData.append('description', document.getElementById('product-description').value);
+    formData.append('price', document.getElementById('product-price').value);
+    formData.append('category', document.getElementById('product-category').value); // Add category field
+    formData.append('image', document.getElementById('product-image').files[0]);
+
+    // Send the form data to the backend
+    fetch('/products', { // Adjust the URL to your backend API endpoint
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // Example header for authentication token
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Product created successfully') {
+            // Clear the form and fetch the updated product list
+            this.reset();
+            fetchProducts();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error adding product');
+    });
+});
+
+        
+    // Event delegation for edit and delete buttons
+    document.getElementById('product-list').addEventListener('click', function(event) {
+        if (event.target.classList.contains('edit-btn')) {
+            // Edit product logic here
+            alert('Edit functionality to be implemented.');
+        }
+
+        if (event.target.classList.contains('delete-btn')) {
+            // Delete product logic here
+            const row = event.target.closest('tr');
+            row.remove();
+        }
+    });
+
+    // Fetch and display products for the current seller
+    function fetchProductsBySeller(onSuccess, onError) {
+    // Retrieve token from local storage
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.log('No token found in local storage');
+        return;
+    }
+
+    // Decode the token to extract seller ID (Assuming JWT token structure)
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const sellerId = payload.userId;
+
+    if (!sellerId) {
+        console.log('No seller ID found in token');
+        return;
+    }
+
+    // Fetch products for the specific seller
+    fetch(`/products/seller/${sellerId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (Array.isArray(data)) {
+            console.log(data);
+        } else {
+            console.log('Invalid data format received');
+        }
+    })
+    .catch(error => console.log('Error fetching products:', error));
+}
+});
+
+    </script>
+</body>
+</html>

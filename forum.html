@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="forum.css">
+    <title>Nexus Bloom | Forum</title>
+</head>
+<body>
+    <header class="header">
+        <div class="nav">
+            <ul class="nav-menu">
+                <li><a href="homepage.html" class="nav-link">Home</a></li>
+                <li><a href="forum.html" class="nav-link">Forum</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Community Forum</h1>
+
+        <section class="categories">
+            <h2>Categories</h2>
+            <ul class="category-list">
+                <li><a href="#health">Women's Health</a></li>
+                <li><a href="#safety">Safety Tips</a></li>
+                <li><a href="#business">Business Advice</a></li>
+                <li><a href="#experiences">Personal Experiences</a></li>
+                <li><a href="#events">Events and Networking</a></li>
+            </ul>
+        </section>
+
+        <section class="threads">
+            <h2>Discussion Threads</h2>
+
+            <div class="thread">
+                <h3><a href="#thread1">Thread Title 1</a></h3>
+                <p>Created by <strong>User1</strong> on <em>Date</em></p>
+                <p>Thread description or initial post content goes here...</p>
+            </div>
+
+            <div class="thread">
+                <h3><a href="#thread2">Thread Title 2</a></h3>
+                <p>Created by <strong>User2</strong> on <em>Date</em></p>
+                <p>Thread description or initial post content goes here...</p>
+            </div>
+
+            <!-- More threads can be added here -->
+        </section>
+
+        <section class="new-thread">
+            <h2>Create New Thread</h2>
+            <form id="new-thread-form">
+                <label for="thread-title">Thread Title:</label>
+                <input type="text" id="thread-title" name="thread-title" required>
+
+                <label for="thread-content">Content:</label>
+                <textarea id="thread-content" name="thread-content" rows="5" required></textarea>
+
+                <button type="submit">Post Thread</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Nexus Bloom. All rights reserved.</p>
+    </footer>
+</body>
+</html>

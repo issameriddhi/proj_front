@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #e9ecef;
+    color: #212529;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    color: #0d6efd;
+}
+
+.header p {
+    font-size: 1rem;
+    color: #495057;
+    margin-top: 10px;
+}
+
+.donation-options {
+    margin-bottom: 20px;
+}
+
+.donation-options h2 {
+    font-size: 1.2rem;
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.donation-options ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.donation-options li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #212529;
+    padding: 5px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+.input-box label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.submit-button button {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-button button:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.05);
+}
+
+.thank-you-message {
+    text-align: center;
+    margin-top: 20px;
+    color: #212529;
+}
+
+.thank-you-message h2 {
+    color: #0d6efd;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.contact-info a {
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #0b5ed7;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    background-color: #212529;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-container button:hover {
+    background-color: #0d6efd;
+    transform: scale(1.05);
+}

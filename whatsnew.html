@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="whatsnew.css">
+    <title>Nexus Bloom | What’s New</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="homepage.html" class="nav-link">Home</a></li>
+                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="donate.html" class="nav-link">Donate</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li class="basket">
+                    <img src="basket.png" alt="Basket Icon">
+                    <span>Basket: </span><span id="basket-count">0</span> items
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>What’s New</h1>
+
+        <section class="update">
+            <h2>Community Drives</h2>
+            <div class="drive">
+                <h3>Beach Cleaning Drive</h3>
+                <p>Join us in our beach cleaning drive aimed at keeping our shores pristine. This is a great opportunity to make a positive impact on the environment.</p>
+                <button onclick="window.location.href='beach-cleaning.html'">Learn More</button>
+            </div>
+            <div class="drive">
+                <h3>Tree Planting Campaign</h3>
+                <p>Participate in our tree planting campaign to help combat deforestation. Every tree planted contributes to a greener planet.</p>
+                <button onclick="window.location.href='tree-planting.html'">Get Involved</button>
+            </div>
+            <div class="drive">
+                <h3>Plastic Waste Reduction Initiative</h3>
+                <p>Be part of our initiative to reduce plastic waste. Join workshops and community efforts to promote sustainable practices.</p>
+                <button onclick="window.location.href='plastic-waste.html'">Learn More</button>
+            </div>
+        </section>
+
+        <section class="update">
+            <h2>Awareness Initiatives</h2>
+            <p>We are committed to raising awareness about sustainability and eco-friendly practices. Participate in our workshops, educational events, and community outreach programs to learn more and make a difference.</p>
+            <button onclick="window.location.href='awareness.html'">Get Involved</button>
+        </section>
+
+        
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='homepage.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <script>
+        let basketCount = 0;
+
+        function updateBasketCount() {
+            document.getElementById('basket-count').textContent = basketCount;
+        }
+
+        document.querySelectorAll('.add-to-basket').forEach(button => {
+            button.addEventListener('click', () => {
+                basketCount++;
+                updateBasketCount();
+                alert('Product added to basket!');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="accessories.css">
+    <title>Nexus Bloom | Accessories</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="homepage.html" class="nav-link">Home</a></li>
+                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="donate.html" class="nav-link">Donate</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li class="basket">
+                    <img src="basket.png" alt="Basket Icon">
+                    <span>Basket: </span><span id="basket-count">0</span> items
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <h2>Filter Accessories</h2>
+            <div class="filter-group">
+                <label for="type">Type:</label>
+                <select id="type">
+                    <option value="all">All</option>
+                    <option value="watches">Watches</option>
+                    <option value="jewelry">Jewelry</option>
+                    <option value="bags">Bags</option>
+                    <option value="hats">Hats</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="price">Price Range:</label>
+                <select id="price">
+                    <option value="all">All</option>
+                    <option value="0-50">Under $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-200">$100 - $200</option>
+                    <option value="200+">Over $200</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="material">Material:</label>
+                <select id="material">
+                    <option value="all">All</option>
+                    <option value="leather">Leather</option>
+                    <option value="metal">Metal</option>
+                    <option value="fabric">Fabric</option>
+                    <option value="plastic">Plastic</option>
+                </select>
+            </div>
+        </aside>
+
+        <div class="product-grid">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <img src="image2.jpg.png" alt="Accessory 1">
+                <div class="product-details">
+                    <h2>Accessory 1</h2>
+                    <p class="material">Material: Leather</p>
+                    <p class="price">$60</p>
+                    <p class="description">A stylish leather watch perfect for formal events.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <img src="image2.jpg.png" alt="Accessory 2">
+                <div class="product-details">
+                    <h2>Accessory 2</h2>
+                    <p class="material">Material: Metal</p>
+                    <p class="price">$80</p>
+                    <p class="description">An elegant metal bracelet that complements any outfit.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <img src="image2.jpg.png" alt="Accessory 3">
+                <div class="product-details">
+                    <h2>Accessory 3</h2>
+                    <p class="material">Material: Fabric</p>
+                    <p class="price">$30</p>
+                    <p class="description">A vibrant fabric bag ideal for casual outings.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Card 4 -->
+            <div class="product-card">
+                <img src="image2.jpg.png"alt="Accessory 4">
+                <div class="product-details">
+                    <h2>Accessory 4</h2>
+                    <p class="material">Material: Plastic</p>
+                    <p class="price">$25</p>
+                    <p class="description">A fun plastic hat perfect for summer.</p>
+                    <div class="button-group">
+                        <button class="add-to-basket">
+                            <img src="basket.png" alt="Add to Basket Icon"> Add to Basket
+                        </button>
+                        <button class="buy-now">
+                            <img src="buy.png" alt="Buy Now Icon"> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='homepage.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <script>
+        let basketCount = 0;
+
+        function updateBasketCount() {
+            document.getElementById('basket-count').textContent = basketCount;
+        }
+
+        document.querySelectorAll('.add-to-basket').forEach(button => {
+            button.addEventListener('click', () => {
+                basketCount++;
+                updateBasketCount();
+                alert('Accessory added to basket!');
+            });
+        });
+    </script>
+</body>
+</html>

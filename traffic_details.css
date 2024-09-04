@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.header {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.content-wrapper {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-section label {
+    font-weight: bold;
+}
+
+.filter-button {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+}
+
+.traffic-summary {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+}
+
+.summary-card h3 {
+    margin-bottom: 10px;
+    color: #0d6efd;
+}
+
+.summary-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.traffic-chart {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.traffic-chart h2 {
+    margin-bottom: 20px;
+    color: #0d6efd;
+}
+
+.footer {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.back-button button {
+    background-color: #fff;
+    color: #0d6efd;
+    border: 1px solid #0d6efd;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-button button:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .traffic-summary {
+        flex-direction: column;
+    }
+
+    .summary-card {
+        margin-bottom: 10px;
+    }
+}
