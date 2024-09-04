@@ -43,9 +43,9 @@
                 <div class="form-group">
                     <label for="product-category">Category:</label>
                     <select id="product-category" name="product-category" required>
-                        <option value="Clothing">Clothing</option>
-                        <option value="Accessories">Accessories</option>
-                        <option value="Sustainable Products">Sustainable Products</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="sustainable">Sustainable Products</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -55,7 +55,9 @@
                 <button type="submit" class="add-product-btn">Add Product</button>
             </form>
         </section>
-        
+        <section id="product-list" class="product-list">
+            <!-- Products will be dynamically inserted here -->
+        </section>
     </div>
 
     <footer class="footer">
@@ -65,49 +67,68 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        function decodeJWT(token) {
+            // Split the token into parts: header, payload, and signature
+            const [header, payload, signature] = token.split('.');
+        
+            // Decode the base64 URL-encoded payload
+            const decodedPayload = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
+        
+            // Optionally, you can decode the header in a similar way
+            const decodedHeader = JSON.parse(atob(header.replace(/-/g, '+').replace(/_/g, '/')));
+        
+            return { header: decodedHeader, payload: decodedPayload };
+        }
+    document.addEventListener('DOMContentLoaded', function() {
+        const {payload} = decodeJWT(localStorage.getItem('token'))
+        console.log(payload.userId)
     // Fetch and display products on page load
     fetchProductsBySeller("yeay","ohnooo");
 
     // Handle form submission
-    document.getElementById('add-product-form').addEventListener('submit', function(event) {
+    document.getElementById('add-product-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     // Create a FormData object to handle file uploads
-    const formData = new FormData();
-    formData.append('name', document.getElementById('product-name').value);
-    formData.append('description', document.getElementById('product-description').value);
-    formData.append('price', document.getElementById('product-price').value);
-    formData.append('category', document.getElementById('product-category').value); // Add category field
-    formData.append('image', document.getElementById('product-image').files[0]);
-
-    // Send the form data to the backend
-    fetch('/products', { // Adjust the URL to your backend API endpoint
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // Example header for authentication token
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
+    document.getElementById('add-product-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+    
+        // Create a FormData object to handle file uploads
+        
+        const formData = new FormData();
+        formData.append('name', document.getElementById('product-name').value);
+        formData.append('description', document.getElementById('product-description').value);
+        formData.append('price', document.getElementById('product-price').value);
+        formData.append('category', document.getElementById('product-category').value);
+        formData.append('seller', payload.userId);
+        formData.append('image', document.getElementById('product-image').files[0]); // Append the file
+    
+        // Send the form data to the backend
+        const response = await fetch('http://localhost:3000/products', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Authentication token
+            }
+        });
+    
+        const data = await response.json();
         if (data.message === 'Product created successfully') {
             // Clear the form and fetch the updated product list
-            this.reset();
-            fetchProducts();
+           // this.reset();
+            fetchProductsBySeller();
+            alert(data.message)
+            
         } else {
             alert('Error: ' + data.message);
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error adding product');
     });
+    
 });
 
         
     // Event delegation for edit and delete buttons
-    document.getElementById('product-list').addEventListener('click', function(event) {
+    /*document.getElementById('product-list').addEventListener('click', function(event) {
         if (event.target.classList.contains('edit-btn')) {
             // Edit product logic here
             alert('Edit functionality to be implemented.');
@@ -118,10 +139,10 @@
             const row = event.target.closest('tr');
             row.remove();
         }
-    });
+    });*/
 
     // Fetch and display products for the current seller
-    function fetchProductsBySeller(onSuccess, onError) {
+    function fetchProductsBySeller() {
     // Retrieve token from local storage
     const token = localStorage.getItem('token');
     if (!token) {
@@ -139,17 +160,28 @@
     }
 
     // Fetch products for the specific seller
-    fetch(`/products/seller/${sellerId}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
-            'Content-Type': 'application/json'
-        }
-    })
+  fetch(`http://localhost:3000/products/seller/${sellerId}`)
     .then(response => response.json())
     .then(data => {
+        const productList = document.getElementById('product-list');
         if (Array.isArray(data)) {
             console.log(data);
+            data.forEach(product => {
+                // Create a new product item
+                const productItem = document.createElement('div');
+                productItem.classList.add('product-item');
+                
+                // Set product details
+                productItem.innerHTML = `
+                    <img src="${product.image.replace('\\', '/')}">
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <p class="price">$${product.price}</p>
+                `;
+                
+                // Append the product item to the product list
+                productList.appendChild(productItem);
+            });
         } else {
             console.log('Invalid data format received');
         }

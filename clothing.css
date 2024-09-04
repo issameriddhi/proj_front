@@ -111,90 +111,75 @@ body {
     justify-content: center;
 }
 
+..product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
 .product-card {
-    background-color: #ffffff;
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    padding: 20px;
     text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+    position: relative;
 }
 
 .product-card img {
-    margin-top: 5px;
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-    margin: auto;
-    border: 0.8px solid black;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
 }
 
-
-.product-details {
-    padding: 15px;
+.product-card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
 }
 
-.product-details h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #212529;
-    margin-bottom: 10px;
+.product-card p {
+    font-size: 0.9em;
+    color: #555;
 }
 
-.product-details .material,
-.product-details .price {
-    font-size: 1rem;
-    color: #495057;
-    margin-bottom: 5px;
+.product-card .price {
+    font-size: 1.1em;
+    color: #000;
+    margin: 10px 0;
 }
 
-.product-details .description {
-    font-size: 0.9rem;
-    color: #495057;
+.product-card .seller {
+    font-size: 0.8em;
+    color: #888;
+    margin: 10px 0;
 }
 
-.button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.add-to-basket,
-.buy-now {
-    background-color: #0d6efd;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.add-to-basket img,
-.buy-now img {
-    width: 20px;
-    height: 20px;
-}
-
-.add-to-basket:hover,
-.buy-now:hover {
-    background-color: #0056b3;
-}
-
-.buy-now {
+.product-card button {
     background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 10px 15px;
+    margin: 5px;
+    transition: background-color 0.3s;
 }
 
-.buy-now:hover {
+.product-card button:hover {
     background-color: #218838;
+}
+
+.product-card .buy-now {
+    background-color: #007bff;
+}
+
+.product-card .buy-now:hover {
+    background-color: #0056b3;
 }
 
 .footer {
