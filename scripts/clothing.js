@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchProductsByCategory(category) {
     try {
-        const response = await fetch(`http://localhost:3000/products/category/${category}`);
+        const response = await fetch(`https://project-co7s.onrender.com/products/category/${category}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch products: ${response.status}`);
         }
