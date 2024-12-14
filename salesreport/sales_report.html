@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Report - Nexus Bloom</title>
+    <link rel="stylesheet" href="sales_report.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="../homeseller/home_seller.html" class="nav-link">Dashboard</a></li>
+                <li><a href="../manageproduct/manage-products.html" class="nav-link">Manage Products</a></li>
+                <li><a href="../salesreport/sales_report.html" class="nav-link">Sales Report</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        <h1>Sales Report</h1>
+        
+        <div class="filter-section">
+
+            
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="All">All</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Sustainable Items">Sustainable Items</option>
+            </select>
+            <button class="filter-button" onclick="filterReport()">Filter</button>
+        </div>
+
+        <table class="sales-table">
+            <thead>
+                <tr>
+                    <th>Seller ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Number of Items Sold</th>
+                    <th>Date</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody id="product-grid">
+                <!-- Dynamic Data Will Be Inserted Here -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='../homeseller/home_seller.html'">Back to Dashboard</button>
+        </div>
+    </footer>
+
+    <script src="sales_report.js"></script>
+</body>
+</html>

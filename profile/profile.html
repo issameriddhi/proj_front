@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Bloom | Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>User Profile</h1>
+        </header>
+
+        <div class="profile">
+            <!-- Clickable profile picture -->
+            <img src="../assets/R.jpg" alt="Profile Picture" class="profile-pic" id="profilePic" onclick="triggerProfilePicInput()">
+            
+            <!-- Hidden file input for changing the profile picture -->
+            <input type="file" id="profilePicInput" accept="image/*" style="display: none;" onchange="handleProfilePicChange()"><br>
+
+            <div class="profile-details">
+                <label>Username: </label>
+                <h2 id="name"></h2>
+                <label>Email: </label>
+                <p id="email"></p>
+                <label>Phone: </label>
+                <p id="phone"></p>
+                <label>Country: </label>
+                <p id="country"></p>
+                <label>Bio: </label>
+                <p id="bio"></p>
+                
+                <!-- Editable Profile Form -->
+                <form id="profile-form" style="display: none;">
+                    <label for="emailInput">Email:</label>
+                    <input type="email" id="emailInput" name="email"><br>
+                    
+                    <label for="phoneInput">Phone:</label>
+                    <input type="tel" id="phoneInput" name="phone"><br>
+                    
+                    <label for="countryInput">Country:</label>
+                    <input type="text" id="countryInput" name="country"><br>
+                    
+                    <label for="bioInput">Bio:</label>
+                    <textarea id="bioInput" name="bio"></textarea><br>
+                </form>
+            </div>
+        </div>
+
+        <div class="social-media">
+            <h3>Connect with me</h3>
+            <ul>
+                <li><a href="https://linkedin.com/in/riddhiK" target="_blank">LinkedIn</a></li>
+                <li><a href="https://twitter.com/riddhiK" target="_blank">Twitter</a></li>
+                <li><a href="https://github.com/riddhiK" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+
+        <div class="button-container">
+            <button id="edit-btn" onclick="editProfile()">Edit</button>
+            <button id="save-btn" onclick="saveProfile()" style="display: none;">Save</button>
+            <button onclick="goBack()">Back</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        const username = localStorage.getItem('uname');
+
+        addEventListener("DOMContentLoaded", () => {
+            fetchUser().then(data => {
+                document.getElementById('name').innerText = data.username || "Username not provided";
+                document.getElementById('email').innerText = data.email || 'Email not provided';
+                document.getElementById('phone').innerText = data.phoneNumber || "";
+                document.getElementById('country').innerText = data.country || "";
+                document.getElementById('bio').innerText = data.desc || "";
+            });
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function logout() {
+            window.location.href = "../signin/index.html";
+            localStorage.clear();
+        }
+
+        const fetchUser = async () => {
+            const response = await fetch(`http://localhost:3000/user/${username}`);
+            const data = await response.json();
+            return data;
+        };
+
+        function editProfile() {
+            document.getElementById('edit-btn').style.display = 'none';
+            document.getElementById('save-btn').style.display = 'inline-block';
+            document.getElementById('profile-form').style.display = 'block';
+
+            // Populate form fields with current profile data
+            document.getElementById('emailInput').value = document.getElementById('email').innerText;
+            document.getElementById('phoneInput').value = document.getElementById('phone').innerText;
+            document.getElementById('countryInput').value = document.getElementById('country').innerText;
+            document.getElementById('bioInput').value = document.getElementById('bio').innerText;
+        }
+
+        function triggerProfilePicInput() {
+            document.getElementById('profilePicInput').click(); // Trigger the hidden file input click
+        }
+
+        function handleProfilePicChange() {
+            const profilePicInput = document.getElementById('profilePicInput');
+            const profilePicFile = profilePicInput.files[0];
+            
+            if (profilePicFile) {
+                // Preview the selected image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profilePic').src = e.target.result; // Set the new profile pic
+                };
+                reader.readAsDataURL(profilePicFile);
+
+                // Automatically save the new profile picture
+                saveProfilePic(profilePicFile);
+            }
+        }
+
+        function saveProfilePic(profilePicFile) {
+            const formData = new FormData();
+            formData.append('profilePic', profilePicFile); // Append the selected file
+
+            // Send to the server (adjust the URL to match your server route)
+            fetch(`http://localhost:3000/user/profile-pic/${username}`, {
+                method: 'PUT',
+                body: formData
+            }).then(response => response.json())
+              .then(data => {
+                  console.log('Profile picture updated successfully');
+              }).catch(error => console.error('Error updating profile picture:', error));
+        }
+
+        function saveProfile() {
+            // Retrieve input values
+            const email = document.getElementById('emailInput').value;
+            const phoneNumber = document.getElementById('phoneInput').value;
+            const country = document.getElementById('countryInput').value;
+            const desc = document.getElementById('bioInput').value;
+
+            // Update profile details
+            document.getElementById('email').innerText = email;
+            document.getElementById('phone').innerText = phoneNumber;
+            document.getElementById('country').innerText = country;
+            document.getElementById('bio').innerText = desc;
+
+            // Hide form and show edit button
+            document.getElementById('edit-btn').style.display = 'inline-block';
+            document.getElementById('save-btn').style.display = 'none';
+            document.getElementById('profile-form').style.display = 'none';
+
+            // Prepare data to send to the server
+            const data = {
+                email,
+                phoneNumber,
+                country,
+                desc
+            };
+            
+
+            // Send the updated profile details to the server
+            fetch(`http://localhost:3000/user/${username}`, {
+                method: 'PUT',
+                body: data // Send as FormData since we have profile details
+            }).then(response => response.json())
+              .then(data => {
+                  console.log('Profile updated successfully');
+              }).catch(error => console.error('Error updating profile:', error));
+        }
+    </script>
+</body>
+</html>

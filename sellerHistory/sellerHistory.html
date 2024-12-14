@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller History - Nexus Bloom</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navigation styles */
+        .dashboard-nav {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+        }
+        .logout button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .logout button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Product list styles */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1200px;
+        }
+        .product-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .product-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .product-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-item h2 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            flex-grow: 1;
+        }
+        .product-item .price {
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: auto;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .dashboard-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+            .product-list {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="dashboard-nav">
+        <div class="nav-logo">
+            <p>Nexus Bloom</p>
+        </div>
+        <div class="nav-links">
+            <a href="../homeseller/home_seller.html">Dashboard</a>
+            <a href="../profile/profile.html">Profile</a>
+            <a href="../sellerHistory/sellerHistory.html">History</a>
+            <a class="logout">
+                <button onclick="window.location.href='../signin/index.html'">Logout</button>
+            </a>
+        </div>
+    </nav>
+    <section id="product-list" class="product-list">
+        <!-- Products will be dynamically inserted here -->
+    </section>
+    <script>
+        function fetchProductsBySeller() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.log('No token found in local storage');
+                return;
+            }
+
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const sellerId = payload.username;
+
+            if (!sellerId) {
+                console.log('No seller ID found in token');
+                return;
+            }
+
+            fetch(`http://localhost:3000/products/seller/${sellerId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const productList = document.getElementById('product-list');
+                    if (Array.isArray(data)) {
+                        console.log(data);
+                        data.forEach(product => {
+                            const productItem = document.createElement('div');
+                            productItem.classList.add('product-item');
+                            
+                            productItem.innerHTML = `
+                                <img src="${product.image.replace('\\', '/')}">
+                                <div class="product-content">
+                                    <h2>${product.name}</h2>
+                                    <p>${product.description}</p>
+                                    <p class="price">$${product.price}</p>
+                                </div>
+                            `;
+                            
+                            productList.appendChild(productItem);
+                        });
+                    } else {
+                        console.log('Invalid data format received');
+                    }
+                })
+                .catch(error => console.log('Error fetching products:', error));
+        }
+
+        window.addEventListener("DOMContentLoaded", fetchProductsBySeller);
+    </script>
+</body>
+</html>

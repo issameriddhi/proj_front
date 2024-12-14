@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('../whatsnew/community.avif') no-repeat center center fixed; /* Add your background image here */
+    background-size: cover; /* Ensure the background covers the entire screen */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main header styles */
+.header {
+    background: rgba(34, 34, 34, 0.8); /* Semi-transparent header to blend with background */
+    padding: 20px 30px; /* Increased padding for a larger header */
+}
+
+/* Navigation menu */
+.nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Adjusted gap for better spacing */
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em; /* Increased font size */
+    font-weight: bold; /* Made the font bolder */
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #1e90ff;
+}
+
+/* Main content container */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85); /* Slightly transparent white background to blend with wallpaper */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px); /* Add a subtle blur effect to make text more readable */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+    font-size: 2.5em; /* Increased size for better appearance */
+    font-weight: bold; /* Made the heading bolder */
+    letter-spacing: 1px; /* Added letter spacing for a better look */
+}
+
+/* Section for updates */
+.update {
+    margin-bottom: 30px;
+}
+
+.update h2 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Individual drive container */
+.drive {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9); /* Slight transparency for each drive box */
+    transition: transform 0.3s, background 0.3s;
+}
+
+.drive:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 1); /* Full opacity on hover for emphasis */
+}
+
+/* Titles and text styling */
+h3 {
+    margin-bottom: 10px;
+    color: #2d8d3d;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    background: #2d8d3d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #005f99;
+}
+
+/* Footer and back button */
+.footer {
+    padding: 10px; /* Further reduced padding for a smaller footer */
+    text-align: center;
+    background: rgba(34, 34, 34, 0.8); /* Semi-transparent footer */
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Small shadow effect */
+}
+
+
+.back-button button {
+    background: #444;
+    border: none;
+    padding: 12px 20px; /* Increased padding for a bigger button */
+    color: #fff;
+    font-size: 1.1em; /* Increased font size */
+    font-weight: bold; /* Made the text bolder */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.back-button button:hover {
+    background: #555;
+}

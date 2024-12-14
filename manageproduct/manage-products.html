@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="manage-products.css">
+    <title>Nexus Bloom | Manage Products</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="dashboard-nav">
+            <div class="nav-logo">
+                <p>Nexus Bloom</p>
+            </div>
+            <div class="nav-links">
+                <a href="../homeseller/home_seller.html">Dashboard</a>
+                <a href="../profile/profile.html">Profile</a>
+                <a href="../sellerHistory/sellerHistory.html">History</a>
+                <a class="logout">
+                    <button onclick="window.location.href='../signin/index.html'">Logout</button>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Manage Your Products</h1>
+
+        
+
+        <section class="add-product-section">
+            <h2>Add New Product</h2>
+            <form id="add-product-form">
+                <div class="form-group">
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Description:</label>
+                    <textarea id="product-description" name="product-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price (₹):</label>
+                    <input type="number" id="product-price" name="product-price" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Category:</label>
+                    <select id="product-category" name="product-category" required>
+                        <option value="clothing">Clothing</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="sustainable">Sustainable Products</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-image">Upload Product Image:</label>
+                    <input type="file" id="product-image" name="product-image" accept="image/*" required>
+                </div>
+                <button type="submit" class="add-product-btn">Add Product</button>
+            </form>
+        </section>
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2024 NexusBloom. All rights reserved.</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+ // Handle form submission
+
+
+    // Create a FormData object to handle file uploads
+    document.getElementById('add-product-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+    
+        // Create a FormData object to handle file uploads
+        const selln = localStorage.getItem('uname');
+        const formData = new FormData();
+        formData.append('name', document.getElementById('product-name').value);
+        formData.append('description', document.getElementById('product-description').value);
+        formData.append('price', document.getElementById('product-price').value);
+        formData.append('category', document.getElementById('product-category').value);
+        formData.append('seller', selln);
+        
+        formData.append('image', document.getElementById('product-image').files[0]); // Append the file
+    
+        // Send the form data to the backend
+        const response = await fetch('http://localhost:3000/products', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Authentication token
+            }
+        });
+    
+        const data = await response.json();
+        if (data.message === 'Product created successfully') {
+            // Clear the form and fetch the updated product list
+           // this.reset();
+            alert(data.message)
+            
+        } else {
+            alert('Error: ' + data.message);
+        }
+        return false;
+    });
+    
+});
+
+
+
+
+    </script>
+</body>
+</html>

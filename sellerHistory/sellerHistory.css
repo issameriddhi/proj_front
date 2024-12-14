@@ -1,0 +1,78 @@
+.dashboard-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d6efd; /* Blue background */
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    gap: 15px;
+}
+
+.nav-logo p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: auto; /* Pushes the logo to the left */
+}
+
+.nav-links {
+    margin-left: 50px;
+    display: flex;
+    gap: 30px; /* Increased space between links */
+}
+
+.nav-links a {
+    color: #e0e0e0; /* Light gray text color for links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffffff; /* White color on hover */
+}
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 1em;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 1em);
+    box-sizing: border-box;
+    padding: 1em;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.product-item:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product-item h2 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+.product-item p {
+    margin: 0.5em 0;
+}
+
+.product-item .price {
+    font-weight: bold;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="clothing.css">
+    <title>Nexus Bloom | Clothing Items</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="../homepage/homepage.html" class="nav-link">Home</a></li>
+                <li><a href="../about/aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="../donate/donate.html" class="nav-link">Donate</a></li>
+                <li><a href="../profile/profile.html" class="nav-link">Profile</a></li>
+                <li><a href="../cart/cart.html" class="nav-link">Cart</a></li>
+                <li class="basket">
+                    <img src="../assets/basket.png" alt="Basket Icon">
+                    <span>Basket: </span><span id="basket-count">0</span> items
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        
+        <div class="product-grid" id="product-grid">
+            <!-- Clothing products will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='../homepage/homepage.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <script src="../scripts/clothing.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cart.css">
+    <title>Nexus Bloom | Cart</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="../homepage/homepage.html" class="nav-link">Home</a></li>
+                <li><a href="../about/aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="../donate/donate.html" class="nav-link">Donate</a></li>
+                <li><a href="../profile/profile.html" class="nav-link">Profile</a></li>
+                <li class="basket">
+                    <img src="../assets/basket.png" alt="Basket Icon">
+                    <span>Basket: </span><span id="basket-count">0</span> items
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-content">
+        <div class="cart-container">
+            <div id="cart-items" class="product-grid">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="bill-details">
+                <h2>Order Summary</h2>
+                <div id="bill-items">
+                    <!-- Bill items will be dynamically inserted here -->
+                </div>
+                <div class="total">
+                    <h3>Total: $<span id="total-price">0.00</span></h3>
+                </div>
+                <button class="buy-now-button" onclick="window.location.href='../buy/buy.html'">Buy Now</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='../homepage/homepage.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <script src="../scripts/cart.js"></script>
+</body>
+</html>

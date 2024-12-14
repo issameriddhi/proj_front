@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="faq.css">
+    <title>FAQ | Nexus Bloom</title>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="../homepage/homepage.html" class="nav-link">Home</a></li>
+                <li><a href="../about/aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="../donate/donate.html" class="nav-link">Donate</a></li>
+                <li><a href="../profile/profile.html" class="nav-link">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content for FAQ -->
+    <div class="main-content">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq">
+                <div class="question" onclick="toggleAnswer(this)">
+                    <p>What is NexusBloom?</p>
+                    <span class="plus">+</span>
+                </div>
+                <div class="answer">
+                    <p>NexusBloom is an e-commerce platform dedicated to promoting women's safety, health, and community. We provide a marketplace for local women to sell their handmade products, alongside clothing and sustainable goods that we curate.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq">
+                <div class="question" onclick="toggleAnswer(this)">
+                    <p>How can I become a seller on NexusBloom?</p>
+                    <span class="plus">+</span>
+                </div>
+                <div class="answer">
+                    <p>To become a seller, sign up on our website, complete your profile, and submit your products for approval. Once approved, you can start selling your handmade goods and reach a wider audience!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq">
+                <div class="question" onclick="toggleAnswer(this)">
+                    <p>What types of products can I find on NexusBloom?</p>
+                    <span class="plus">+</span>
+                </div>
+                <div class="answer">
+                    <p>You can explore a variety of products, including clothing, accessories, and sustainable items, all created by local women. Support women entrepreneurs by shopping for unique handmade goods!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq">
+                <div class="question" onclick="toggleAnswer(this)">
+                    <p>How do I place an order?</p>
+                    <span class="plus">+</span>
+                </div>
+                <div class="answer">
+                    <p>Browse our categories, select the products you wish to purchase, and add them to your cart. Proceed to checkout, enter your personal details, and confirm your order. You’ll receive a confirmation email shortly after!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq">
+                <div class="question" onclick="toggleAnswer(this)">
+                    <p>What is your return policy?</p>
+                    <span class="plus">+</span>
+                </div>
+                <div class="answer">
+                    <p>We want you to be satisfied with your purchase! If you're not happy, you can return items within 30 days for a refund or exchange, provided they are in their original condition.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq">
+                <div class="question" onclick="toggleAnswer(this)">
+                    <p>How can I get involved with NexusBloom?</p>
+                    <span class="plus">+</span>
+                </div>
+                <div class="answer">
+                    <p>You can participate in community activities, such as beach cleaning or tree planting. Visit our 'Get Involved' section to learn more about upcoming campaigns and how to participate!</p>
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq">
+                <div class="question" onclick="toggleAnswer(this)">
+                    <p>How does NexusBloom support local women?</p>
+                    <span class="plus">+</span>
+                </div>
+                <div class="answer">
+                    <p>NexusBloom empowers local women by providing a platform for them to sell their products, promoting their craftsmanship and creating a community that supports women entrepreneurs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with Back to Home Button -->
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='../homepage/homepage.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <!-- FAQ Dropdown Script -->
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const plus = element.querySelector('.plus');
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+                plus.innerText = "+";
+            } else {
+                answer.style.display = "block";
+                plus.innerText = "-";
+            }
+        }
+    </script>
+</body>
+</html>

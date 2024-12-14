@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #e9f5e1; /* Soft light green */
+    color: #2c3e50; /* Dark grayish-blue */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    background-color: #27ae60; /* Green header */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px 0; /* Increased padding */
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Increased gap for larger navbar */
+}
+
+.nav-link {
+    text-decoration: none;
+    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    font-size: 1.2rem; /* Slightly larger font size */
+    color: white; /* White text */
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #a9dfbf; /* Light green hover effect */
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 200px;
+    height: calc(100vh - 50px); /* Full height minus top offset */
+    background-color: #2c3e50; /* Dark gray sidebar */
+    padding: 20px; /* Padding inside sidebar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space evenly */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar-menu li {
+    margin: 15px 0; /* Vertical spacing between items */
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, color 0.3s;
+    display: block;
+    padding: 10px 15px; /* Padding for better click area */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.sidebar-menu a:hover {
+    background-color: #27ae60; /* Green background on hover */
+    color: white; /* White text on hover */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px; /* Space for fixed header */
+    margin-left: 200px; /* Space for sidebar */
+    width: calc(100% - 200px); /* Full width minus sidebar width */
+    max-width: 1000px; /* Ensure content doesn't stretch too wide */
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info h2 {
+    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    font-size: 1.8rem;
+    color: #27ae60; /* Green text */
+    margin-bottom: 10px;
+}
+
+.info p {
+    font-size: 1rem;
+    color: #2c3e50; /* Dark grayish-blue text */
+    line-height: 1.6;
+}
+
+.quarters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows */
+    gap: 20px; /* Increase gap for more spacing */
+    width: calc(100% - 30px); /* Adjust width for spacing */
+    height: calc(100vh - 80px); /* Full viewport height minus header */
+    margin-left: 30px; /* Space between sidebar and quarters */
+}
+
+.content-bar {
+    background-size: cover; /* Cover the element */
+    background-position: center; /* Center the image */
+    color: #ffffff; /* White text for better contrast */
+    text-decoration: none;
+    text-align: center;
+    padding: 60px; /* Increased padding for larger buttons */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Larger shadow */
+    font-family: 'Roboto', sans-serif; /* Roboto font for buttons */
+    font-weight: bolder;
+    font-size: 2rem; /* Larger font size */
+    transition: background-color 0.3s, transform 0.2s, color 0.3s;
+    display: flex; /* Flexbox to center content */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    height: 100%; /* Full height of the grid cell */
+    position: relative; /* Positioning context for the overlay */
+    overflow: hidden; /* Hide overflow */
+    color: #fcfcfc; /* Brighter white text */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Subtle text shadow for better readability */
+}
+
+.content-bar:hover {
+    background-color: rgba(50, 218, 120, 0.8); /* Slightly transparent green on hover */
+    color: #a9dfbf; /* Light green text on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+.content-bar::before {
+    content: ""; /* Empty content for overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text readability */
+    z-index: 1; /* Overlay below text */
+    transition: opacity 0.3s;
+}
+
+.content-bar:hover::before {
+    opacity: 0.3; /* Make the overlay lighter on hover */
+}
+
+.content-bar span {
+    position: relative;
+    z-index: 2; /* Ensure text is above overlay */
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+footer {
+    background-color: #27ae60; /* Match the header color */
+    color: white; /* White text */
+    text-align: center; /* Centered text */
+    padding: 10px 0; /* Padding for top and bottom */
+    position: relative; /* Positioning context */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Specific background images for each section */
+.content-bar:nth-child(1) {
+    background-image: url('./assests/cloth.jpg'); /* Clothing image */
+}
+
+.content-bar:nth-child(2) {
+    background-image: url('./assests/acce.jpg'); /* Accessories image */
+}
+
+.content-bar:nth-child(3) {
+    background-image: url('./assests/items.jpg'); /* Other items image */
+}
+
+.content-bar:nth-child(4) {
+    background-image: url('./assests/clipart4197396.png'); /* What's New image */
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - Nexus Bloom</title>
+    <link rel="stylesheet" href="home_seller.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <nav class="dashboard-nav">
+            <div class="nav-logo">
+                <p>Nexus Bloom</p>
+            </div>
+            <div class="nav-links">
+                <a href="../homeseller/home_seller.html">Dashboard</a>
+                <a href="../profile/profile.html">Profile</a>
+                <a href="../sellerHistory/sellerHistory.html">History</a>
+                <a class="logout">
+                    <button onclick="window.location.href='../signin/index.html'">Logout</button>
+                </a>
+            </div>
+        </nav>
+
+        <div class="dashboard-content">
+            <section class="overview-section">
+                <header>Sales Overview</header>
+                <div class="overview-cards">
+                    <div class="card">
+                        <h3>Total Sales</h3>
+                        <p id="total-sales"></p>
+                    </div>
+                    <div class="card">
+                        <h3>Products Sold</h3>
+                        <p id="qty"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="action-section">
+                <div class="action-cards">
+                    <div class="card">
+                        <h3>Manage Products</h3>
+                        <a href="../manageproduct/manage-products.html" class="action-button">Go to Manage Products</a>
+                    </div>
+                    <div class="card">
+                        <h3>Sales Report</h3>
+                        <a href="../salesreport/sales_report.html" class="action-button">View Sales Report</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="resources-section">
+                <header>Seller Resources</header>
+                <div class="resources-list">
+                    <a href="#">Guides & FAQs</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="./home_seller.js"></script>
+</body>
+</html>

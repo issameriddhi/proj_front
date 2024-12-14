@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="awareness.css">
+    <title>Get Involved | Nexus Bloom</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-menu">
+                <li><a href="../homepage/homepage.html" class="nav-link">Home</a></li>
+                <li><a href="../about/aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="../donate/donate.html" class="nav-link">Donate</a></li>
+                <li><a href="../profile/profile.html" class="nav-link">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Get Involved</h1>
+
+        <form id="involvement-form">
+            <div class="form-group">
+                <label for="activity">Choose an Activity</label>
+                <select id="activity" required>
+                    <option value="" disabled selected>Select an activity</option>
+                    <option value="beach-cleaning">Beach Cleaning Drive</option>
+                    <option value="tree-planting">Tree Planting Campaign</option>
+                    <option value="plastic-reduction">Plastic Waste Reduction Initiative</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="campaign-details">Select a Campaign</label>
+                <select id="campaign-details" required>
+                    <option value="" disabled selected>Select campaign details</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="time-slot">Choose a Time Slot</label>
+                <select id="time-slot" required>
+                    <option value="" disabled selected>Select a time slot</option>
+                    <option value="morning">Morning Slot: 8 AM - 10 AM</option>
+                    <option value="afternoon">Afternoon Slot: 12 PM - 2 PM</option>
+                    <option value="evening">Evening Slot: 4 PM - 6 PM</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="back-button">
+            <button onclick="window.location.href='../homepage/homepage.html'">Back to Home</button>
+        </div>
+    </footer>
+
+    <script>
+        const activitySelect = document.getElementById('activity');
+        const campaignDetailsSelect = document.getElementById('campaign-details');
+
+        const campaigns = {
+            'beach-cleaning': [
+                { name: 'Beach Cleaning Drive 1', location: 'Juhu Beach, Mumbai', date: 'Sep 20, 2024' },
+                { name: 'Beach Cleaning Drive 2', location: 'Versova Beach, Mumbai', date: 'Sep 25, 2024' },
+                { name: 'Beach Cleaning Drive 3', location: 'Chowpatty Beach, Mumbai', date: 'Oct 5, 2024' }
+            ],
+            'tree-planting': [
+                { name: 'Tree Planting Campaign 1', location: 'Borivali National Park, Mumbai', date: 'Sep 22, 2024' },
+                { name: 'Tree Planting Campaign 2', location: 'Aarey Colony, Mumbai', date: 'Sep 29, 2024' },
+                { name: 'Tree Planting Campaign 3', location: 'Sanjay Gandhi National Park, Mumbai', date: 'Oct 7, 2024' }
+            ],
+            'plastic-reduction': [
+                { name: 'Plastic Waste Reduction 1', location: 'Marine Drive, Mumbai', date: 'Sep 23, 2024' },
+                { name: 'Plastic Waste Reduction 2', location: 'Carter Road, Bandra', date: 'Sep 30, 2024' },
+                { name: 'Plastic Waste Reduction 3', location: 'Powai Lake, Mumbai', date: 'Oct 8, 2024' }
+            ]
+        };
+
+        activitySelect.addEventListener('change', function() {
+            const selectedActivity = activitySelect.value;
+            campaignDetailsSelect.innerHTML = '<option value="" disabled selected>Select campaign details</option>';
+
+            if (selectedActivity) {
+                campaigns[selectedActivity].forEach(campaign => {
+                    const option = document.createElement('option');
+                    option.value = `${campaign.name}, ${campaign.location}, ${campaign.date}`;
+                    option.textContent = `${campaign.name} - ${campaign.location} (${campaign.date})`;
+                    campaignDetailsSelect.appendChild(option);
+                });
+            }
+        });
+
+        document.getElementById('involvement-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const activity = activitySelect.options[activitySelect.selectedIndex].text;
+            const campaignDetails = campaignDetailsSelect.value;
+            const timeSlot = document.getElementById('time-slot').value;
+
+            if (name && activity && campaignDetails && timeSlot) {
+                alert(`Thank you ${name} for participating in the activity!Looking Forward to ur presence :)`);
+            }
+        });
+    </script>
+</body>
+</html>
